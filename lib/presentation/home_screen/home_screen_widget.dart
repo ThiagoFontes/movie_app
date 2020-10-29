@@ -93,6 +93,10 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                       height: 16,
                     ),
                     itemBuilder: (context, index) => PosterWidget(
+                      image: DecorationImage(
+                        image: NetworkImage(
+                            '''http://image.tmdb.org/t/p/w185/%5c${cubit.listOfMovies[index].posterPath}?api_key=6360a5ff49a2c17cb0db3072cdb4dcfa'''),
+                      ),
                       child: Align(
                         alignment: Alignment.bottomLeft,
                         child: Column(
