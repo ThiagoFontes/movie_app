@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/consts/app_colors.dart';
 import 'package:movie_app/presentation/home_screen/home_screen_widget.dart';
-import 'package:movie_app/widgets_library/poster_widget.dart';
+import 'injection_container.dart' as di;
 
-void main() {
+void main() async {
+  await di.setUpServiceLocator();
   runApp(MyApp());
 }
 

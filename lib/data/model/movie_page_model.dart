@@ -1,5 +1,4 @@
 import 'package:movie_app/data/model/movie_model.dart';
-import 'package:movie_app/domain/entities/movie_entity.dart';
 import 'package:movie_app/domain/entities/movie_page_entity.dart';
 
 class MoviePageModel extends MoviePageEntity {
