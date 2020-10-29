@@ -21,14 +21,17 @@ class PosterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: _child,
-      width: _width,
-      height: _height,
-      decoration: BoxDecoration(
-        color: AppColors.gray[3],
-        borderRadius: BorderRadius.circular(10),
-        image: _image,
+    return AspectRatio(
+      aspectRatio: 320 / 470,
+      child: Container(
+        child: _child,
+        width: _width,
+        height: _height,
+        decoration: BoxDecoration(
+          color: AppColors.darkBlue,
+          borderRadius: BorderRadius.circular(10),
+          image: _image,
+        ),
       ),
     );
   }

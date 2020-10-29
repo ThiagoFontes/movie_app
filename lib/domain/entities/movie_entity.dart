@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class MovieEntity {
+class MovieEntity extends Equatable {
   final double popularity;
   final int voteCount;
   final bool video;
@@ -12,7 +12,7 @@ class MovieEntity {
   final String originalTitle;
   final List<int> genreIds;
   final String title;
-  final double voteAverage;
+  final String voteAverage;
   final String overview;
   final String releaseDate;
 
@@ -31,4 +31,22 @@ class MovieEntity {
       this.voteAverage,
       this.overview,
       this.releaseDate);
+
+  @override
+  List<Object> get props => [
+        popularity,
+        voteCount,
+        video,
+        posterPath,
+        id,
+        adult,
+        backdropPath,
+        originalLanguage,
+        originalTitle,
+        genreIds,
+        title,
+        voteAverage,
+        overview,
+        releaseDate,
+      ];
 }
