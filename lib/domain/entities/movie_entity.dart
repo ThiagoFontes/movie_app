@@ -12,7 +12,7 @@ class MovieEntity extends Equatable {
   final String originalTitle;
   final List<int> genreIds;
   final String title;
-  final double voteAverage;
+  final String voteAverage;
   final String overview;
   final String releaseDate;
 

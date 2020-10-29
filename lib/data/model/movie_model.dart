@@ -13,7 +13,7 @@ class MovieModel extends MovieEntity {
     String originalTitle,
     List<int> genreIds,
     String title,
-    double voteAverage,
+    String voteAverage,
     String overview,
     String releaseDate,
   }) : super(
@@ -35,20 +35,20 @@ class MovieModel extends MovieEntity {
 
   MovieModel fromJson(Map<String, dynamic> json) {
     return MovieModel(
-      popularity: json['popularity'],
-      voteCount: json['vote_count'],
-      video: json['video'],
-      posterPath: json['poster_path'],
-      id: json['id'],
-      adult: json['adult'],
+      popularity: json['popularity'] as double,
+      voteCount: json['vote_count'] as int,
+      video: json['video'] as bool,
+      posterPath: json['poster_path'] as String,
+      id: json['id'] as int,
+      adult: json['adult'] as bool,
       backdropPath: json['backdrop_path'],
       originalLanguage: json['original_language'],
       originalTitle: json['original_title'],
       genreIds: json['genre_ids'].cast<int>(),
-      title: json['title'],
-      voteAverage: json['vote_average'],
-      overview: json['overview'],
-      releaseDate: json['release_date'],
+      title: json['title'] as String,
+      voteAverage: json['vote_average'].toString(),
+      overview: json['overview'] as String,
+      releaseDate: json['release_date'] as String,
     );
   }
 
