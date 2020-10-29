@@ -8,3 +8,14 @@ abstract class HomeScreenState extends Equatable {
 }
 
 class HomeScreenInitial extends HomeScreenState {}
+
+class FilterCategoryState extends HomeScreenState {
+  FilterCategoryState(this.category);
+
+  final MovieCategories category;
+
+  @override
+  List<Object> get props => [category];
+}
+
+class SearchTextState extends HomeScreenState {}
