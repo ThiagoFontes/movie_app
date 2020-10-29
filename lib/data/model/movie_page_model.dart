@@ -15,11 +15,11 @@ class MoviePageModel extends MoviePageEntity {
         );
 
   MoviePageModel fromJson(Map<String, dynamic> json) {
-    final results = new List<MovieModel>();
+    final results = <MovieModel>[];
 
     if (json['results'] != null) {
       json['results'].forEach((v) {
-        results.add(new MovieModel().fromJson(v));
+        results.add(MovieModel().fromJson(v));
       });
     }
 
@@ -32,12 +32,12 @@ class MoviePageModel extends MoviePageEntity {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['page'] = this.page;
-    data['total_results'] = this.totalResults;
-    data['total_pages'] = this.totalPages;
-    if (this.results != null) {
-      data['results'] = this.results.map((v) {
+    final data = <String, dynamic>{};
+    data['page'] = page;
+    data['total_results'] = totalResults;
+    data['total_pages'] = totalPages;
+    if (results != null) {
+      data['results'] = results.map((v) {
         return (v as MovieModel).toJson();
       }).toList();
     }
