@@ -12,7 +12,7 @@ class HomeScreenInitial extends HomeScreenState {}
 class FilterCategoryState extends HomeScreenState {
   FilterCategoryState(this.category, this.listOfMovies);
 
-  final MovieCategories category;
+  final GenreEntity category;
   final List<MovieEntity> listOfMovies;
 
   @override

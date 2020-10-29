@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/consts/app_colors.dart';
-import 'package:movie_app/domain/entities/movie_categories.dart';
 import 'package:movie_app/presentation/home_screen/cubit/home_screen_cubit.dart';
 import 'package:movie_app/widgets_library/category_button.dart';
 import 'package:movie_app/widgets_library/poster_widget.dart';
@@ -15,17 +14,10 @@ class HomeScreenWidget extends StatefulWidget {
 }
 
 class _HomeScreenWidgetState extends State<HomeScreenWidget> {
-  final Map<MovieCategories, String> categorieNameMap = {
-    MovieCategories.acao: 'Ação',
-    MovieCategories.aventura: 'Aventura',
-    MovieCategories.comedia: 'Comedia',
-    MovieCategories.fantasia: 'Fantasia',
-  };
-
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<HomeScreenCubit>(context).setCategory(MovieCategories.acao);
+    BlocProvider.of<HomeScreenCubit>(context).getGenres();
   }
 
   @override
@@ -39,6 +31,10 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
           },
           builder: (context, state) {
             final cubit = context.bloc<HomeScreenCubit>();
+
+            if (state is HomeScreenInitial) {
+              return Center(child: CircularProgressIndicator());
+            }
 
             return Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -77,13 +73,13 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: List.generate(
-                        MovieCategories.values.length,
+                        cubit.listOfGenres.length,
                         (index) => CategoryButton(
-                          name: categorieNameMap[MovieCategories.values[index]],
-                          isSelected: cubit.currentCategory ==
-                              MovieCategories.values[index],
+                          name: cubit.listOfGenres[index].name,
+                          isSelected:
+                              cubit.currentGenre == cubit.listOfGenres[index],
                           onClick: () =>
-                              cubit.setCategory(MovieCategories.values[index]),
+                              cubit.setCategory(cubit.listOfGenres[index]),
                         ),
                       ),
                     ),
